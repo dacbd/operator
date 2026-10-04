@@ -148,7 +148,7 @@ jobs:
             --set console.existingSecret=my-console-jwt \
             > /tmp/helm-console-existing-secret.yaml
           ! grep -q "console-secret" /tmp/helm-console-existing-secret.yaml
-          grep -q "name: my-console-jwt" /tmp/helm-console-existing-secret.yaml
+          grep -q 'name: "my-console-jwt"' /tmp/helm-console-existing-secret.yaml
 
       - name: Check release metadata
         run: make release-metadata-check
