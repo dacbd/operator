@@ -77,7 +77,7 @@ spec:
             - name: JWT_SECRET
               valueFrom:
                 secretKeyRef:
-                  name: {{ $consoleSecretName }}
+                  name: {{ $consoleSecretName | quote }}
                   key: jwt-secret
           {{- with .Values.console.bindAddress }}
             - name: CONSOLE_BIND_ADDRESS
