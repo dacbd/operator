@@ -50,7 +50,7 @@ spec:
         app.kubernetes.io/component: console
       annotations:
         # Force reload on secret changes
-        checksum/secret: {{ if .Values.console.existingSecret }}{{ .Values.console.existingSecret | sha256sum }}{{ else }}{{ include (print $.Template.BasePath "/console-secret.yaml") . | sha256sum }}{{ end }}
+        checksum/secret: {{ include "rustfs-operator.consoleSecretChecksum" . }}
     spec:
       serviceAccountName: {{ include "rustfs-operator.consoleServiceAccountName" . }}
       {{- if $openShiftEnabled }}
